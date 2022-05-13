@@ -46,4 +46,31 @@ describe('Tests', () => {
 
     expect(dataRecovered2).toBe(null);
   });
+
+  it('should be able to remove value after some time', async () => {
+    const data: Data<number> = {
+      key: 'test',
+      data: 1,
+    };
+
+    jest.useFakeTimers();
+
+    fakeCacheProvider.save(data, 'app:', { ttlInSeconds: 3 });
+
+    const dataRecovered = await fakeCacheProvider.recover<number>(
+      'test',
+      'app:'
+    );
+
+    expect(dataRecovered).toBe(1);
+
+    jest.runAllTimers();
+
+    const newDataRecovered = await fakeCacheProvider.recover<number>(
+      'test',
+      'app:'
+    );
+
+    expect(newDataRecovered).toBe(null);
+  });
 });

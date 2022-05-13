@@ -1,5 +1,6 @@
 import Data from '../dto/data';
 import CacheTemplate from '../template/CacheTemplate';
+import SaveOptions from '../dto/saveOptions';
 
 export default class FakeCacheProvider implements CacheTemplate {
   cache: Map<string, unknown>;
@@ -8,8 +9,17 @@ export default class FakeCacheProvider implements CacheTemplate {
     this.cache = new Map<string, unknown>();
   }
 
-  async save(value: Data, prefix: string): Promise<void> {
+  async save(
+    value: Data,
+    prefix: string,
+    options?: SaveOptions
+  ): Promise<void> {
     this.cache.set(`${prefix}${value.key}`, value.data);
+    if (options?.ttlInSeconds) {
+      setTimeout(() => {
+        this.invalidate(value.key, prefix);
+      }, options.ttlInSeconds * 1000);
+    }
   }
 
   async invalidate(key: string, prefix: string): Promise<void> {
