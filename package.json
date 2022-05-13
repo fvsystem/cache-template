@@ -1,0 +1,23 @@
+{
+  "name": "@fvsystem/cache-template",
+  "version": "0.0.1",
+  "description": "Cache Template",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fvsystem/cache-template.git"
+  },
+  "keywords": [
+    "cache",
+    "template"
+  ],
+  "author": "Lucas Rego",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fvsystem/cache-template/issues"
+  },
+  "homepage": "https://github.com/fvsystem/cache-template#readme"
+}
