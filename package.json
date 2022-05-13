@@ -1,6 +1,6 @@
 {
   "name": "@fvsystem/cache-template",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Cache Template",
   "main": "dist/index.js",
   "scripts": {
